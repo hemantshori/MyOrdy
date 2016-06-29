@@ -54,13 +54,6 @@ public class StepImplementations {
 
 
 
-	@Then("^I see the \"([^\"]*)\"$")
-	public void I_see_the(String arg1) throws Throwable {
-	MenuItemPage menuItemPage = PageFactory.initElements(driver, MenuItemPage.class);
-	menuItemPage.clickButton(arg1);
-			
-	}
-
 	@And("^I click on \"([^\"]*)\" button$")
 	public void I_click_on_button(String arg1) throws Throwable {
 		AddToCartPage menuItemPage = PageFactory.initElements(driver, AddToCartPage.class);

@@ -22,7 +22,9 @@ public class LoginPage {
 	public MenuPage clickButton(String arg1) throws Throwable {
 		
 		if (arg1.equals("Submit Order")) {
-			
+			DBUtilities createXpath = new DBUtilities(driver);
+			String myxpath = createXpath.xpathMaker(arg1);
+			driver.findElement(By.xpath(myxpath)).click();
 			Thread.sleep(3000);
 			// for popup
 			Robot rb = new Robot();
@@ -30,8 +32,8 @@ public class LoginPage {
 			rb.keyRelease(KeyEvent.VK_ENTER);
 			Thread.sleep(3000);
 		}
-		if (arg1.equals("Search")) {
-			Thread.sleep(3000);
+		if (arg1.equals("Search Order")) {
+			Thread.sleep(6000);
 			driver.switchTo().activeElement();
 			Alert alert = driver.switchTo().alert();
 			alert.accept();

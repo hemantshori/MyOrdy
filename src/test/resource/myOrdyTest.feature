@@ -8,7 +8,8 @@
     And I click on "Add to Cart" button
     And I click on "Submit Order" button
     And I click on "Search Order" button
-    And I click on "Search" button 
+   
+   
     
     Examples: 
       | Shop       | Menu   | Menu_Item_Category | Product | amount | Order_Total |
