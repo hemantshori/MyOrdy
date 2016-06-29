@@ -1,0 +1,17 @@
+package com.myOrdyPages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+public class MenuItemPage extends LoginPage
+{
+
+	public MenuItemPage(WebDriver arg1) {
+		super(arg1);
+		
+	}
+
+	
+			}
+
