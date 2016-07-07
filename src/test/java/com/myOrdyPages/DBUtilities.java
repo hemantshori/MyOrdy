@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -50,16 +51,23 @@ public class DBUtilities {
 	    	
 	 
 	 // following will check if the element exist on the screen
-	 	 public static void checkElementPresentMessage(String arg1){
-	 		 
+	 	 public void checkElementPresentMessage(String arg1){
+	 
 		 System.out.println("***Page Element " + arg1.toUpperCase() +" is displayed successfully***");
 	 }
 	 	 // differnt from above this checks for webelement
-	 	 public static void checkWebElementPresent(WebElement arg1){
-	 		 
-			 System.out.println("***Page Element " + arg1 +" is displayed successfully***");
-		 }
-		 
+	 	 
+	 	public void isTextPresent(String arg1) throws InterruptedException{
+	 		System.out.println(" ****" +arg1);
+	 		Thread.sleep(4000);
+	 		if(driver.getPageSource().contains(arg1)){
+	 			System.out.println("Text " +arg1+ "is present");
+	 		}else{
+	 			System.out.println("Text " +arg1+ "NOT present");
+	 		}
+	 
+	 	}
+	 	  
 	// action performed on element(coming as arg)
 	 	 public static void actionPerformedClick (String arg1)
 	 	 {
@@ -67,9 +75,6 @@ public class DBUtilities {
 	 		 System.out.println("Clicking on " +arg1.toUpperCase());
 	 		 
 	 	 }
-	
-	
-	
 
 	 public static void writeLog(String message) {
 	    	
@@ -77,8 +82,6 @@ public class DBUtilities {
 	    	System.out.println(timeStamp + " " + message);
 	    	
 	    }
-	 
-	 
 
 	 public static void hitEnter() {
 	    	
@@ -140,8 +143,13 @@ public class DBUtilities {
 			    {
 				String xpath = "//*[text()='"+buttonName+"']";
 				 return xpath;
-			    
 			    }
 			 
+			 public String xpathMakerForInputField(String fieldName)
+			    {
+				String xpath = "//*[@id='"+fieldName+"']";
+				System.out.println(" its " +xpath);
+				 return xpath;
+			    }
 
 }

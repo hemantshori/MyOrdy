@@ -1,17 +1,16 @@
 package com.MyOdryPOS;
 
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-import java.awt.AWTException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.myOrdyPages.AddToCartPage;
+import com.myOrdyPages.CustomerSearchPage;
+import com.myOrdyPages.DBUtilities;
 import com.myOrdyPages.LoginPage;
-import com.myOrdyPages.MenuItemPage;
 import com.myOrdyPages.MenuPage;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -26,11 +25,10 @@ public class StepImplementations {
 	    driver.manage().window().maximize();
 	  }
 
-	
-//	  @After()
-//	  public void tearDown() {
-//	    driver.quit();
-//	  }
+	  @After()
+	  public void tearDown() {
+	    driver.quit();
+	  }
 	
 	@Given("^I am  on \"([^\"]*)\" POS$")
 	public void I_am_on_POS(String arg1) throws Throwable {
@@ -49,6 +47,7 @@ public class StepImplementations {
 	@And("^I click on Menu item category \"([^\"]*)\"$")
 	public void I_click_on_Menu_item_category(String arg1) throws Throwable {
     MenuPage menuPage = PageFactory.initElements(driver, MenuPage.class);
+    System.out.println("Clicking on " +arg1);  // to do remove later
     menuPage.clickButton(arg1);
 	}
 
@@ -62,7 +61,18 @@ public class StepImplementations {
 		// following is to shift control on windows popup
 
 	}
-	
+
+	@Given("^I enter \"([^\"]*)\" details as \"([^\"]*)\"$")
+	public void I_enter_details_as(String arg1, String arg2) throws Throwable {
+		CustomerSearchPage enterValue = PageFactory.initElements(driver, CustomerSearchPage.class);
+	    enterValue.enterInputFields(arg1,arg2);
+	}
+	@Then("^I should view message \"([^\"]*)\"$")
+	public void I_should_view_message(String arg1) throws Throwable {
+	    DBUtilities txtPresent = PageFactory.initElements(driver, DBUtilities.class);
+	    txtPresent.isTextPresent(arg1);
+	    
+	}
 }
 
 
